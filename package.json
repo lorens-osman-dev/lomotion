@@ -1,0 +1,27 @@
+{
+    "name": "lomotion",
+    "version": "1.0.0",
+    "description": "lomotion is Gnome extension lets you switch and manage Gnome's workspaces seamlessly.",
+    "type": "module",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lorens-osman-dev/lomotion"
+    },
+    "author": "Lorens Osman",
+    "license": "LGPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/lorens-osman-dev/lomotion/issues"
+    },
+    "homepage": "https://github.com/lorens-osman-dev/lomotion#readme",
+    "sideEffects": false,
+    "devDependencies": {
+        "eslint": "^8.56.0",
+        "eslint-plugin-jsdoc": "^48.0.6",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "@girs/gjs": "^3.2.7",
+        "@girs/gnome-shell": "^45.0.0-beta9"
+    }
+}
