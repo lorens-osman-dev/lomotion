@@ -18,22 +18,92 @@ export default class MyExtension extends Extension {
         //-keybindings
         this.setKeyboardKeybindings()
 
+        const now = global.get_current_time()
         let mode = Shell.ActionMode.ALL
         let flag = Meta.KeyBindingFlags.NONE;
         this.gsettings = this.getSettings();
 
         let activeWorkspace = global.workspace_manager.get_active_workspace()
+        let activeWorkspaceDisplay = activeWorkspace.get_display()
+        let nextWorkspace = activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT)
+        let prevWorkspace = activeWorkspace.get_neighbor(Meta.MotionDirection.LEFT)
+
+
+
+        Main.wm.addKeybinding("move-right", this.gsettings, flag, mode, () => {
+            // focusedWindow.change_workspace(nextWorkspace)
+            //focusedWindow.activate_with_workspace(global.get_current_time(), nextWorkspace)
+            if (activeWorkspaceDisplay) {
+                let focusedWindow = activeWorkspaceDisplay.get_focus_window()
+                let focusedWindow_title = focusedWindow.get_title()
+
+
+                //nextWorkspace.activate(now)
+                //focusedWindow.activate(now)
+                activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT).activate(global.get_current_time())
+
+                focusedWindow.activate_with_workspace(now, activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT))
+                Main.notify(`kk title is ${focusedWindow.get_window_type()}`);
+            } else {
+                Main.notify(`there is no activeWorkspaceDisplay wind kkkkkk`);
+            }
+
+
+        });
+        Main.wm.addKeybinding("move-left", this.gsettings, flag, mode, () => {
+            //focusedWindow.activate_with_workspace(global.get_current_time(), nextWorkspace)
+            //nextWorkspace.activate(global.get_current_time())
+            if (activeWorkspaceDisplay) {
+                let focusedWindow = activeWorkspaceDisplay.get_focus_window()
+                let focusedWindow_title = focusedWindow.get_title()
+
+                focusedWindow.change_workspace(activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT))
+                activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT).activate(global.get_current_time())
+                focusedWindow.activate(now)
+                // activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT).activate(global.get_current_time())
+                // focusedWindow.change_workspace(activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT))
+                // focusedWindow.activate(now)
+
+
+                Main.notify(`oo title is ${focusedWindow_title}`);
+
+
+            } else {
+                Main.notify(`there is no activeWorkspaceDisplay wind oooooo`);
+            }
+
+        });
+
         Main.wm.addKeybinding("go-right", this.gsettings, flag, mode, () => {
 
             // global.workspace_manager.get_active_workspace().get_neighbor(Meta.MotionDirection.DOWN).activate(global.get_current_time());
             // let newWorkspace = global.workspace_manager.append_new_workspace(true, global.get_current_time())
-            activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT).activate(global.get_current_time())
+            activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT).activate(now)
+            Main.notify(`now is used`);
 
 
         });
         Main.wm.addKeybinding("go-left", this.gsettings, flag, mode, () => {
-            activeWorkspace.get_neighbor(Meta.MotionDirection.LEFT).activate(global.get_current_time())
+            // activeWorkspace.get_neighbor(Meta.MotionDirection.LEFT).activate(global.get_current_time())
+            if (activeWorkspaceDisplay) {
+                let focusedWindow = activeWorkspaceDisplay.get_focus_window()
+                let focusedWindow_title = focusedWindow.get_title()
+
+                focusedWindow.change_workspace(activeWorkspace.get_neighbor(Meta.MotionDirection.LEFT))
+                activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT).activate(global.get_current_time())
+                focusedWindow.activate_with_workspace(now, activeWorkspace.get_neighbor(Meta.MotionDirection.RIGHT))
+
+
+
+                Main.notify(`oo title is ${focusedWindow_title}`);
+
+
+            } else {
+                Main.notify(`there is no activeWorkspaceDisplay wind oooooo`);
+            }
         });
+
+
     }
 
     disable() {

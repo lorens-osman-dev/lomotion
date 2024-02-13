@@ -16,5 +16,22 @@
         You can create GTK entry in prefs and set it as CDATA.
       </description>
     </key>
+
+    <key type="as" name="move-right">
+      <default><![CDATA[['<Super>k']]]></default>
+      <summary>The shortcut key</summary>
+      <description>
+        You can create GTK entry in prefs and set it as CDATA.
+      </description>
+    </key>
+
+    <key type="as" name="move-left">
+      <default><![CDATA[['<Super>o']]]></default>
+      <summary>The shortcut key</summary>
+      <description>
+        You can create GTK entry in prefs and set it as CDATA.
+      </description>
+    </key>
+
   </schema>
 </schemalist>
