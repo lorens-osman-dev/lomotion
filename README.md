@@ -24,6 +24,11 @@ Lomotion is Gnome extension lets you switch and manage Gnome's workspaces seamle
 
 - For applications with tabs like Visual Studio Code, web browsers, and many others, you can use keyboard shortcuts to switch between tabs, you can set switch to previous tab [CapsLock + Q] and the next with [CapsLock + W]
 
+### Installation
+
+- From : [extensions.gnome.org](https://extensions.gnome.org/extension/6768/lomotion/)
+- Or open **Extension Manager** > Browse > type **lomotion** > install
+
 ---
 
 If you like this extension, feel free to support the development by buying a coffee:
