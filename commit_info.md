@@ -1,10 +1,10 @@
 # Did
 
-[*] use gjs move window left/right[not as expected]
+[*] use gjs for remap caps:super and all settings
+[*] remove schema file
+[*] modified Makefile to not make schema compiled file
+[*] modified metadata.json to remove schema property
 
 # todo
 
-[ ] Make it local to `fillPreferencesWindow` (line 7 `prefs.js`):[EGO Review Guidelines: Destroy](https://gjs.guide/extensions/review-guidelines/review-guidelines.html#destroy-all-objects)
-[ ]All the spawn commands you are doing in `extension.js` should be in gjs:
-[ ] use gjs for remap caps:super
-[ ] fix the info in schema file
+[ ] merge the rout2 branch with main branch the delete rout2
