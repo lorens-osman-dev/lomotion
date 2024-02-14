@@ -3,7 +3,6 @@
     "description": "Lomotion extension lets you switch and manage Gnome's workspaces seamlessly\n\nHow ?\n\t- Switch to the previous workspace with[CapsLock + A] and the next with [CapsLock + S]\n\t- Move the current window to the previous workspace with [CapsLock + D] or the next with [CapsLock + F]\n\t- Switch between windows in the current workspace [CapsLock + E]\n\t- Show workspaces overview hit [CapsLock] once\n\t- Show applications hit [CapsLock] twice\n\nWhy ?!\n\t- One-handed control, manage your workspaces with just one hand, boosting your efficiency and focus.\n\t- Enjoy immersive fullscreen applications without worrying about switching workspaces.\n\t- intutive, simple and fast.\n\nTip\n\t- For applications with tabs like Visual Studio Code, web browsers, and many others, you can use keyboard shortcuts to switch between tabs, you can set switch to previous tab [CapsLock + Q] and the next with [CapsLock + W]",
     "uuid": "lomotion@lorens.com",
     "url": "https://github.com/lorens-osman-dev/lomotion",
-    "settings-schema": "org.gnome.shell.extensions.lomotion",
     "shell-version": [
         "45"
     ],
