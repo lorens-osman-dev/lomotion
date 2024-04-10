@@ -1,34 +1,27 @@
 import Gio from "gi://Gio";
 import { Extension } from "resource:///org/gnome/shell/extensions/extension.js";
-
-
 export default class lomotion extends Extension {
     enable() {
         this.mapCapslock();
         this.disableToggleQuickSettings();
         this.setKeyboardKeybindings();
     }
-
     disable() {
         this.removeCapslock();
         this.resetKeyboardKeybindings();
         this.resetToggleQuickSettings();
     }
-
     //- mapCapslock function
     mapCapslock() {
         const inputs = new Gio.Settings({ schema: "org.gnome.desktop.input-sources" });
-
         const xkb = inputs.get_strv("xkb-options");
-
         if (xkb.length === 0) {
             inputs.set_strv("xkb-options", ["caps:super"]);
             inputs.apply();
-        } else {
+        }
+        else {
             const xkbArray = xkb[0].trim().split(",");
-
             const isCapsToSuper = xkbArray.find((item) => item.trim() == "caps:super");
-
             if (!isCapsToSuper) {
                 inputs.set_strv("xkb-options", ["caps:super"]);
                 inputs.apply();
@@ -41,22 +34,19 @@ export default class lomotion extends Extension {
         const xkb = inputs.get_strv("xkb-options");
         if (xkb.length === 0) {
             return;
-        } else {
+        }
+        else {
             // convert xkb to array
             const xkbArray = xkb[0].trim().split(",");
-
             const isCapsToSuper = xkbArray.find((item) => item.trim() == "caps:super");
             const isCapsToSuperIndex = xkbArray.findIndex((item) => item.trim() == "caps:super");
-
             if (isCapsToSuper) {
                 xkbArray.splice(isCapsToSuperIndex, 1);
-
                 inputs.set_strv("xkb-options", [`${xkbArray.toString()}`]);
                 inputs.apply();
             }
         }
     }
-
     //-set Keybindings
     setKeyboardKeybindings() {
         const inputs = new Gio.Settings({ schema: "org.gnome.desktop.wm.keybindings" });
@@ -75,7 +65,6 @@ export default class lomotion extends Extension {
         // set super + e
         inputs.set_strv("switch-windows", []);
         inputs.set_strv("switch-windows", ["<Super>e"]);
-
         //apply the changes
         inputs.apply();
     }
@@ -98,26 +87,18 @@ export default class lomotion extends Extension {
         inputs.set_strv("switch-windows", []);
         inputs.set_strv("switch-windows", ["<Alt>Tab"]);
         //apply the changes
-
         inputs.apply();
     }
     //-disable toggle-quick-settings ["<Super>s"] Keybindings
     disableToggleQuickSettings() {
-
         const inputs = new Gio.Settings({ schema: "org.gnome.shell.keybindings" });
-
-
         inputs.set_strv("toggle-quick-settings", []);
-
         inputs.apply();
     }
     //-reset toggle-quick-settings ["<Super>s"] Keybindings
     resetToggleQuickSettings() {
         const inputs = new Gio.Settings({ schema: "org.gnome.shell.keybindings" });
-
         inputs.set_strv("toggle-quick-settings", ["<Super>s"]);
-
         inputs.apply();
     }
 }
-
