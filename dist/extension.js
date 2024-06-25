@@ -3,17 +3,19 @@ import { Extension } from "resource:///org/gnome/shell/extensions/extension.js";
 export default class lomotion extends Extension {
     enable() {
         this.mapCapslock();
-        this.disableToggleQuickSettings();
+        this.disableKeybindings();
         this.setKeyboardKeybindings();
     }
     disable() {
         this.removeCapslock();
         this.resetKeyboardKeybindings();
-        this.resetToggleQuickSettings();
+        this.resetKeybindings();
     }
     //- mapCapslock function
     mapCapslock() {
-        const inputs = new Gio.Settings({ schema: "org.gnome.desktop.input-sources" });
+        const inputs = new Gio.Settings({
+            schema: "org.gnome.desktop.input-sources",
+        });
         const xkb = inputs.get_strv("xkb-options");
         if (xkb.length === 0) {
             inputs.set_strv("xkb-options", ["caps:super"]);
@@ -30,7 +32,9 @@ export default class lomotion extends Extension {
     }
     //- removeCapslock function
     removeCapslock() {
-        const inputs = new Gio.Settings({ schema: "org.gnome.desktop.input-sources" });
+        const inputs = new Gio.Settings({
+            schema: "org.gnome.desktop.input-sources",
+        });
         const xkb = inputs.get_strv("xkb-options");
         if (xkb.length === 0) {
             return;
@@ -49,7 +53,9 @@ export default class lomotion extends Extension {
     }
     //-set Keybindings
     setKeyboardKeybindings() {
-        const inputs = new Gio.Settings({ schema: "org.gnome.desktop.wm.keybindings" });
+        const inputs = new Gio.Settings({
+            schema: "org.gnome.desktop.wm.keybindings",
+        });
         // set super + a
         inputs.set_strv("switch-to-workspace-left", []);
         inputs.set_strv("switch-to-workspace-left", ["<Super>a"]);
@@ -70,35 +76,58 @@ export default class lomotion extends Extension {
     }
     //-reset Keybindings
     resetKeyboardKeybindings() {
-        const inputs = new Gio.Settings({ schema: "org.gnome.desktop.wm.keybindings" });
+        const inputs = new Gio.Settings({
+            schema: "org.gnome.desktop.wm.keybindings",
+        });
         // reset super + a
         inputs.set_strv("switch-to-workspace-left", []);
-        inputs.set_strv("switch-to-workspace-left", ["<Super>Page_Up", "<Super><Alt>Left", "<Control><Alt>Left"]);
+        inputs.set_strv("switch-to-workspace-left", [
+            "<Super>Page_Up",
+            "<Super><Alt>Left",
+            "<Control><Alt>Left",
+        ]);
         // reset super + s
         inputs.set_strv("switch-to-workspace-right", []);
-        inputs.set_strv("switch-to-workspace-right", ["<Super>Page_Down", "<Super><Alt>Right", "<Control><Alt>Right"]);
+        inputs.set_strv("switch-to-workspace-right", [
+            "<Super>Page_Down",
+            "<Super><Alt>Right",
+            "<Control><Alt>Right",
+        ]);
         // reset super + d
         inputs.set_strv("move-to-workspace-left", []);
-        inputs.set_strv("move-to-workspace-left", ["<Super><Shift>Page_Up", "<Super><Shift><Alt>Left", "<Control><Shift><Alt>Left"]);
+        inputs.set_strv("move-to-workspace-left", [
+            "<Super><Shift>Page_Up",
+            "<Super><Shift><Alt>Left",
+            "<Control><Shift><Alt>Left",
+        ]);
         // reset super + f
         inputs.set_strv("move-to-workspace-right", []);
-        inputs.set_strv("move-to-workspace-right", ["<Super><Shift>Page_Down", "<Super><Shift><Alt>Right", "<Control><Shift><Alt>Right"]);
+        inputs.set_strv("move-to-workspace-right", [
+            "<Super><Shift>Page_Down",
+            "<Super><Shift><Alt>Right",
+            "<Control><Shift><Alt>Right",
+        ]);
         // set super + e
         inputs.set_strv("switch-windows", []);
         inputs.set_strv("switch-windows", ["<Alt>Tab"]);
         //apply the changes
         inputs.apply();
     }
-    //-disable toggle-quick-settings ["<Super>s"] Keybindings
-    disableToggleQuickSettings() {
+    /* //^	Disable  Keybindings
+    _ toggle-quick-settings ["<Super>s"]
+    _ toggle-overview (show all apps ) ["<Super>A"]
+    */
+    disableKeybindings() {
         const inputs = new Gio.Settings({ schema: "org.gnome.shell.keybindings" });
         inputs.set_strv("toggle-quick-settings", []);
+        inputs.set_strv("toggle-application-view", []);
         inputs.apply();
     }
-    //-reset toggle-quick-settings ["<Super>s"] Keybindings
-    resetToggleQuickSettings() {
+    //^ Reset Keybindings
+    resetKeybindings() {
         const inputs = new Gio.Settings({ schema: "org.gnome.shell.keybindings" });
         inputs.set_strv("toggle-quick-settings", ["<Super>s"]);
+        inputs.set_strv("toggle-application-view", ["<Super>a"]);
         inputs.apply();
     }
 }
