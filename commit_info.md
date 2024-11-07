@@ -1,5 +1,6 @@
 # Did
 
-[*] Fix Gnome 46 issue which in gnome 46 the keyboard shortcut [super+s] will toggle-quick-settings
+[*] Add support to gnome 47
+[*] Add toggle-fullscreen feature
 
 # todo

@@ -13,6 +13,7 @@ Lomotion is Gnome extension lets you switch and manage Gnome's workspaces seamle
 - Switch between windows in the current workspace [CapsLock + E]
 - Show workspaces overview hit [CapsLock] once
 - Show applications hit [CapsLock] twice
+- Toggle full-screen with [CapsLock + Z]
 
 ### Why ?!
 

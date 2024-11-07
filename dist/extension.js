@@ -71,6 +71,9 @@ export default class lomotion extends Extension {
         // set super + e
         inputs.set_strv("switch-windows", []);
         inputs.set_strv("switch-windows", ["<Super>e"]);
+        // set super + z
+        inputs.set_strv("toggle-fullscreen", []);
+        inputs.set_strv("toggle-fullscreen", ["<Super>z"]);
         //apply the changes
         inputs.apply();
     }
@@ -107,9 +110,11 @@ export default class lomotion extends Extension {
             "<Super><Shift><Alt>Right",
             "<Control><Shift><Alt>Right",
         ]);
-        // set super + e
+        // reset super + e
         inputs.set_strv("switch-windows", []);
         inputs.set_strv("switch-windows", ["<Alt>Tab"]);
+        // reset super + z
+        inputs.set_strv("toggle-fullscreen", []);
         //apply the changes
         inputs.apply();
     }
