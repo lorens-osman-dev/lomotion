@@ -89,6 +89,9 @@ export default class lomotion extends Extension {
 		// set super + z
 		inputs.set_strv("toggle-fullscreen", []);
 		inputs.set_strv("toggle-fullscreen", ["<Super>z"]);
+		// set super + q
+		inputs.set_strv("close", []);
+		inputs.set_strv("close", ["<Super>q"]);
 
 		//apply the changes
 		inputs.apply();
@@ -131,8 +134,10 @@ export default class lomotion extends Extension {
 		inputs.set_strv("switch-windows", ["<Alt>Tab"]);
 		// reset super + z
 		inputs.set_strv("toggle-fullscreen", []);
+		// reset super + q
+		inputs.set_strv("close", []);
+		inputs.set_strv("close", ["<Alt>F4"]);
 		//apply the changes
-
 		inputs.apply();
 	}
 	/* //^	Disable  Keybindings

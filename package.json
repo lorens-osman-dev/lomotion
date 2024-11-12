@@ -1,6 +1,6 @@
 {
     "name": "lomotion",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "lomotion is Gnome extension lets you switch and manage Gnome's workspaces seamlessly.",
     "type": "module",
     "private": true,

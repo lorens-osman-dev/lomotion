@@ -1,6 +1,5 @@
 # Did
 
-[*] Add support to gnome 47
-[*] Add toggle-fullscreen feature
+[*] Add close current active window feature
 
 # todo
