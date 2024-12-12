@@ -2,8 +2,8 @@
   <img src="https://github.com/lorens-osman-dev/lomotion/blob/main/assets/gm300.svg" alt="lomotion logo"/>
 </p>
 
-## Lomotion
-![Downloads](https://img.shields.io/badge/downloads-1233-brightgreen)
+## Lomotion ![Downloads](https://img.shields.io/badge/downloads-1233-brightgreen)
+
 Lomotion is Gnome extension lets you switch and manage Gnome's workspaces seamlessly.
 
 ### How ?
