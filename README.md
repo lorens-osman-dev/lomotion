@@ -3,7 +3,7 @@
 </p>
 
 ## Lomotion
-
+![Downloads](https://img.shields.io/badge/downloads-1233-brightgreen)
 Lomotion is Gnome extension lets you switch and manage Gnome's workspaces seamlessly.
 
 ### How ?
