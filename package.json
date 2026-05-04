@@ -18,7 +18,7 @@
     "devDependencies": {
         "eslint": "^8.56.0",
         "eslint-plugin-jsdoc": "^48.0.6",
-        "typescript": "^5.3.3"
+        "typescript": "^5.9.3"
     },
     "dependencies": {
         "@girs/gjs": "^3.2.7",

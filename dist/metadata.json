@@ -4,11 +4,15 @@
     "uuid": "lomotion@lorens.com",
     "url": "https://github.com/lorens-osman-dev/lomotion",
     "shell-version": [
-        "45","46","47","48"
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50"
     ],
     "version-name": "1",
     "donations": {
         "buymeacoffee": "lorens"
     }
-
 }
