@@ -11,7 +11,8 @@ export default class lomotion extends Extension {
         this.resetKeyboardKeybindings();
         this.resetKeybindings();
     }
-    //- mapCapslock function
+    //- mapCapslock function eeeeeeeeeeeeeeeee
+    // dfvgdgfd
     mapCapslock() {
         const inputs = new Gio.Settings({
             schema: "org.gnome.desktop.input-sources",

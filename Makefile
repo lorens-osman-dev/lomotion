@@ -9,13 +9,11 @@ node_modules: package.json
 	npm install
 
 dist/extension.js dist/prefs.js: node_modules
-	tsc
-
-
+	npx tsc
+	@cp src/metadata.json dist/
+	@cp src/gm.svg dist/
 
 $(NAME).zip: dist/extension.js dist/prefs.js 
-	@cp metadata.json dist/
-	@cp gm.svg dist/
 	@(cd dist && zip ../$(NAME).zip -9r .)
 
 pack: $(NAME).zip
