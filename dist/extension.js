@@ -11,24 +11,22 @@ export default class lomotion extends Extension {
         this.resetKeyboardKeybindings();
         this.resetKeybindings();
     }
-    //- mapCapslock function eeeeeeeeeeeeeeeee
-    // dfvgdgfd
+    //- mapCapslock function
     mapCapslock() {
         const inputs = new Gio.Settings({
             schema: "org.gnome.desktop.input-sources",
         });
-        const xkb = inputs.get_strv("xkb-options");
-        if (xkb.length === 0) {
-            inputs.set_strv("xkb-options", ["caps:super"]);
-            inputs.apply();
-        }
-        else {
-            const xkbArray = xkb[0].trim().split(",");
-            const isCapsToSuper = xkbArray.find((item) => item.trim() == "caps:super");
-            if (!isCapsToSuper) {
-                inputs.set_strv("xkb-options", ["caps:super"]);
-                inputs.apply();
-            }
+        // xkb-options is a real string array (one option per element),
+        // NOT a single comma-joined string. Some older versions of this
+        // extension wrote it incorrectly as one joined string, which is
+        // what caused the intermittent behavior - fix that up here too.
+        const xkb = inputs
+            .get_strv("xkb-options")
+            .flatMap((item) => item.split(","))
+            .map((item) => item.trim())
+            .filter((item) => item.length > 0);
+        if (!xkb.includes("caps:super")) {
+            inputs.set_strv("xkb-options", [...xkb, "caps:super"]);
         }
     }
     //- removeCapslock function
@@ -36,20 +34,14 @@ export default class lomotion extends Extension {
         const inputs = new Gio.Settings({
             schema: "org.gnome.desktop.input-sources",
         });
-        const xkb = inputs.get_strv("xkb-options");
-        if (xkb.length === 0) {
-            return;
-        }
-        else {
-            // convert xkb to array
-            const xkbArray = xkb[0].trim().split(",");
-            const isCapsToSuper = xkbArray.find((item) => item.trim() == "caps:super");
-            const isCapsToSuperIndex = xkbArray.findIndex((item) => item.trim() == "caps:super");
-            if (isCapsToSuper) {
-                xkbArray.splice(isCapsToSuperIndex, 1);
-                inputs.set_strv("xkb-options", [`${xkbArray.toString()}`]);
-                inputs.apply();
-            }
+        const xkb = inputs
+            .get_strv("xkb-options")
+            .flatMap((item) => item.split(","))
+            .map((item) => item.trim())
+            .filter((item) => item.length > 0);
+        const filtered = xkb.filter((item) => item !== "caps:super");
+        if (filtered.length !== xkb.length) {
+            inputs.set_strv("xkb-options", filtered);
         }
     }
     //-set Keybindings
