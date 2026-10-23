@@ -12,6 +12,10 @@
         "50"
     ],
     "version-name": "1",
+    "session-modes": [
+        "user",
+        "unlock-dialog"
+    ],
     "donations": {
         "buymeacoffee": "lorens"
     }
